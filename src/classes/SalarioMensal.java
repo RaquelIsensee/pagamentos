@@ -1,6 +1,6 @@
 package classes;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class SalarioMensal {
     private int id;

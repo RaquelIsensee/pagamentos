@@ -101,5 +101,10 @@ public class Funcionario {
         this.genero = genero;
     }
 
+    @Override
+    public String toString() {
+        return "id: " + id + "| nome: " + nome + "| valor_hora: " + valor_hora;
+    }
+    
 
 }
