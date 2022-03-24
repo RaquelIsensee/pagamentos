@@ -14,6 +14,13 @@ public class SalarioMensal {
         this.valor = valor;
         this.funcionario = funcionario;
     }
+    
+    public SalarioMensal(int id, Date mes, float valor) {
+        this.id = id;
+        this.mes = mes;
+        this.valor = valor;
+    }
+
 
     public SalarioMensal() {
     }
@@ -54,6 +61,11 @@ public class SalarioMensal {
 
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
+    }
+
+    @Override
+    public String toString() {
+        return "Periodo: " + mes.toString().substring(0, 7);
     }
     
     

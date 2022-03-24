@@ -14,7 +14,7 @@ public Connection getConexao(){
  // tenta a conexao, root e root como usuário e senha   
     try{
         Class.forName(DRIVER);
-       connection = DriverManager.getConnection(URL, "root","");
+       connection = DriverManager.getConnection(URL, "root","root");
         return connection;
     }catch(ClassNotFoundException e){
         JOptionPane.showMessageDialog(null, "Driver não encontrado: " + e.toString());

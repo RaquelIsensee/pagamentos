@@ -1,10 +1,12 @@
 package servicos;
+import classes.Funcionario;
 	import classes.SalarioMensal;
 	import java.sql.Connection;
 	import java.sql.PreparedStatement;
 	import java.sql.ResultSet;
 	import java.sql.SQLException;
 	import java.sql.Statement;
+import java.util.ArrayList;
 	
 public class ServicoSalarioMensal{
 
@@ -33,4 +35,35 @@ public class ServicoSalarioMensal{
 	        } 
 	    conexao.close();
 	    }
+            
+            
+            public ArrayList<SalarioMensal> getSalarioByLista()throws SQLException{
+                ArrayList<SalarioMensal> lista = new ArrayList<>();
+                try (Statement st = conexao.getConexao().createStatement(); 
+                     ResultSet rs = st.executeQuery
+                    ("select * from salario_mensal group by mes")) {
+         
+                while (rs.next()){
+                  lista.add(new SalarioMensal(rs.getInt("id"), rs.getDate("mes"),
+                  rs.getFloat("valor")));
+                    }
+                }
+    
+                 return lista;
+            }
+            
+            public float getSalarioTotalByMes(int mes, int ano)throws SQLException{
+                float valortotal = 0;
+                try (Statement st = conexao.getConexao().createStatement(); 
+                     ResultSet rs = st.executeQuery
+                    ("select SUM(valor) as \"valor_total\"  from salario_mensal where MONTH(mes)="+mes+" and year(mes)=" + ano)) {
+                    
+                    while (rs.next()){
+                    valortotal = rs.getFloat("valor_total");
+                    }
+                }
+
+                return valortotal;
+            }
+            
 	}
