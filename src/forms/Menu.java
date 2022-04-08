@@ -18,6 +18,8 @@ public class Menu extends javax.swing.JFrame {
     FCadFuncionario fcadfuncionario;
     FCalcSalarioMensal fcalcsalariomensal;
     FConsultSalariobyMes fconsultsalario;
+    Fsig sig;
+    
     public Menu() {
         initComponents();
     }
@@ -40,6 +42,8 @@ public class Menu extends javax.swing.JFrame {
         jCadSalario = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jGastoMensal = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuSIG = new javax.swing.JMenuItem();
 
         jMenu2.setText("File");
         jMenuBar2.add(jMenu2);
@@ -81,6 +85,20 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu5.setText("SIG");
+        jMenu5.setToolTipText("");
+
+        jMenuSIG.setText("Menu SIG");
+        jMenuSIG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuSIGActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuSIG);
+        jMenuSIG.getAccessibleContext().setAccessibleDescription("");
+
+        jMenuBar1.add(jMenu5);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -117,6 +135,13 @@ public class Menu extends javax.swing.JFrame {
     }
         fcalcsalariomensal.setVisible(true);
     }//GEN-LAST:event_jCadSalarioActionPerformed
+
+    private void jMenuSIGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSIGActionPerformed
+            if (sig == null){
+            sig = new Fsig();
+    }
+        sig.setVisible(true);
+    }//GEN-LAST:event_jMenuSIGActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,8 +185,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuSIG;
     // End of variables declaration//GEN-END:variables
 }
