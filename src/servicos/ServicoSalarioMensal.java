@@ -16,11 +16,12 @@ public class ServicoSalarioMensal{
 	        Connection con = conexao.getConexao();
 
 	        try(PreparedStatement pst = con.prepareStatement(
-	                   "insert into salario_mensal(id, mes, valor, id_funcionario) values (0,?,?,?)"
+	                   "insert into salario_mensal(id, mes, valor, horas_trabalhadas, id_funcionario) values (0,?,?,?,?)"
 	           )){
 	            pst.setDate(1, salarioMensal.getMes());
 	            pst.setFloat(2, salarioMensal.getValor());
-	            pst.setInt(3, salarioMensal.getFuncionario().getId());
+	            pst.setFloat(3,salarioMensal.getHoras_trabalhadas());
+	            pst.setInt(4, salarioMensal.getFuncionario().getId());
 	           
 	            //Executa o codigo acima
 	            pst.executeUpdate();
@@ -35,7 +36,6 @@ public class ServicoSalarioMensal{
 	        } 
 	    conexao.close();
 	    }
-            
             
             public ArrayList<SalarioMensal> getSalarioByLista()throws SQLException{
                 ArrayList<SalarioMensal> lista = new ArrayList<>();
@@ -66,4 +66,17 @@ public class ServicoSalarioMensal{
                 return valortotal;
             }
             
+            public ArrayList<String> getDatas()throws SQLException{
+                ArrayList<String> lista = new ArrayList<>();
+                try (Statement st = conexao.getConexao().createStatement(); 
+                     ResultSet rs = st.executeQuery
+                    ("select distinct mes from salario_mensal;")) {
+         
+                while (rs.next()){
+                  lista.add(rs.getString("mes"));
+                    }
+                }
+    
+                 return lista;
+            }
 	}

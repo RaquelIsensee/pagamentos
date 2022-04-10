@@ -42,9 +42,9 @@ public class FCalcSalarioMensal extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Horas Trabalhadas M�s");
+        jLabel1.setText("Horas Trabalhadas Mes");
 
-        jLabel3.setText("Ano - m�s");
+        jLabel3.setText("Ano - mes");
 
         jLabel2.setText("Funcionario");
 
@@ -174,12 +174,17 @@ public class FCalcSalarioMensal extends javax.swing.JFrame {
 	private void jSairMouseClicked(java.awt.event.MouseEvent evt) {
         dispose();
     } 
+    
 	private void jCalcularMouseClicked(java.awt.event.MouseEvent evt) {
 		Funcionario funcionario = (Funcionario) jFuncionario.getSelectedItem();
-    	float salario = funcionario.getValor_hora() * Integer.parseInt(jHorasTrabalhadas.getText());    	
-        JOptionPane.showMessageDialog(null, "Sal�rio do funcion�rio � " + salario);
+		
+		String horasTrabalhadas = jHorasTrabalhadas.getText();
+		
+    	float salario = funcionario.getValor_hora() * Integer.parseInt(horasTrabalhadas);    	
+        JOptionPane.showMessageDialog(null, "Salario do funcionario: " + salario);
         
         salarioMensal = new SalarioMensal(Date.valueOf(jAnoMes.getText()+ "-01"), salario, funcionario);
+        salarioMensal.setHoras_trabalhadas(Float.parseFloat(horasTrabalhadas));
         
         try {
             servicoSalario.insert(salarioMensal);

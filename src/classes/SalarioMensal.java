@@ -5,7 +5,7 @@ import java.sql.Date;
 public class SalarioMensal {
     private int id;
     private Date mes;
-    private float valor;
+    private float valor,horas_trabalhadas;
     private Funcionario funcionario;
 
     public SalarioMensal(int id, Date mes, float valor, Funcionario funcionario) {
@@ -67,6 +67,14 @@ public class SalarioMensal {
     public String toString() {
         return "Periodo: " + mes.toString().substring(0, 7);
     }
+
+	public float getHoras_trabalhadas() {
+		return horas_trabalhadas;
+	}
+
+	public void setHoras_trabalhadas(float horas_trabalhadas) {
+		this.horas_trabalhadas = horas_trabalhadas;
+	}
     
     
     

@@ -5,10 +5,17 @@
  */
 package servicos;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import classes.SalarioMensal;
 
 /**
  *
@@ -16,25 +23,29 @@ import javax.swing.JTextField;
  */
 public class ServicoSig {
 
-      public int horasTrabalhadas() {
-        int horas;
-        JPanel hrs = new JPanel();
-        JTextField horasTrabalhadas = new JTextField(10);
+    private final Conexao conexao = new Conexao();  
+    Connection con = conexao.getConexao();
 
-    hrs.add(new JLabel("Horas trabalhadas :"));
-    hrs.add(horasTrabalhadas);
+       public int horasTrabalhadasnoMes(String data)throws SQLException{
+        int horas = 0 ;
+        try (Statement st = conexao.getConexao().createStatement(); 
+        		
+                ResultSet rs = st.executeQuery
+               ("select SUM(horas_trabalhadas) as \"horas_mes\"  from salario_mensal where mes = '" + data + "'")){
+            while (rs.next()){
+            	horas = rs.getInt("horas_mes");
+            }
+        }
+
+        return horas;
+    }
     
-     JOptionPane.showConfirmDialog(null, hrs, "Horas trabalhadas : ", JOptionPane.OK_CANCEL_OPTION);
-     horas = Integer.parseInt(horasTrabalhadas.getText());
-     return horas;
-     
-    }  
-    
-      public void faturamento(){
-      int hrs =  horasTrabalhadas();
+      public void faturamento(String data) throws SQLException{
+      int hrs =  this.horasTrabalhadasnoMes(data);
       double faturamento = ((8* 33.33) * hrs);
       faturamento = faturamento  - (((4 *  hrs) * 20) + (faturamento * 0.3));
 
       JOptionPane.showMessageDialog(null, "Valor do lucro atual: " + faturamento);
      }
+
 }
