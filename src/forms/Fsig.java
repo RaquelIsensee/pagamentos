@@ -31,6 +31,9 @@ public class Fsig extends javax.swing.JFrame {
     public Fsig() {
         initComponents();
     }
+    
+    FLucroAtual flucroatual;
+    FLucroSemContratar flucrosemcontratar;
 
     ServicoSig sig = new ServicoSig();
     
@@ -44,33 +47,39 @@ public class Fsig extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jLucroSemContratar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        btnLucroAtual = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("SIG");
 
-        jButton1.setText(" O lucro da fábrica sem contratar um novo funcionário");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jLucroSemContratar.setText(" O lucro da fábrica sem contratar um novo funcionário");
+        jLucroSemContratar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLucroSemContratarMouseClicked(evt);
+            }
+        });
+        jLucroSemContratar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jLucroSemContratarActionPerformed(evt);
             }
         });
 
         jButton2.setText(" O lucro da fábrica se contratar um novo funcionário");
-
-        btnLucroAtual.setText(" O lucro atual");
-        btnLucroAtual.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	btnLucroAtualActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
+        });
 
-			private void btnLucroAtualActionPerformed(ActionEvent evt) {
-                new FLucroAtual().setVisible(true);	
-			}
+        jButton3.setText(" O lucro atual");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
         });
 
         jButton4.setText(" Investimento em aplicação");
@@ -82,9 +91,9 @@ public class Fsig extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+                    .addComponent(jLucroSemContratar, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLucroAtual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(21, 21, 21))
             .addGroup(layout.createSequentialGroup()
@@ -98,11 +107,11 @@ public class Fsig extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1)
                 .addGap(43, 43, 43)
-                .addComponent(jButton1)
+                .addComponent(jLucroSemContratar)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
-                .addComponent(btnLucroAtual)
+                .addComponent(jButton3)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
                 .addGap(0, 69, Short.MAX_VALUE))
@@ -111,10 +120,27 @@ public class Fsig extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jLucroSemContratarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLucroSemContratarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jLucroSemContratarActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jLucroSemContratarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLucroSemContratarMouseClicked
+        if (flucrosemcontratar == null){
+            flucrosemcontratar = new FLucroSemContratar();
+        }
+        flucrosemcontratar.setVisible(true);
+    }//GEN-LAST:event_jLucroSemContratarMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt){
+        if (flucroatual == null){
+            flucroatual = new FLucroAtual();
+        }
+        flucroatual.setVisible(true);
+    }
 
     /**
      * @param args the command line arguments
@@ -155,11 +181,11 @@ public class Fsig extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton btnLucroAtual;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jLucroSemContratar;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -39,13 +39,93 @@ public class ServicoSig {
 
         return horas;
     }
-    
-      public void faturamento(String data) throws SQLException{
-      int hrs =  this.horasTrabalhadasnoMes(data);
-      double faturamento = (48000 * hrs / 200);
-      faturamento = faturamento  - (((4 *  hrs) * 20) + (faturamento * 0.3));
+       
 
-      JOptionPane.showMessageDialog(null, "Valor do lucro atual: " + faturamento);
+    
+   public double faturamentoReal(String data) throws SQLException{
+       int hrs =  this.horasTrabalhadasnoMes(data);
+       double faturamentoReal = (48000 * hrs / 200);
+       return faturamentoReal;
+   }   
+   
+   public double custoOperacionalTotal(String data) throws SQLException{
+       double faturamentoReal = faturamentoReal(data);
+       double custoOperacionalTotal = faturamentoReal * 0.30;
+       return custoOperacionalTotal;
+   }     
+   
+   public double faturamentoPorMaquinaVelha(String data) throws SQLException{
+       double faturamentoReal = faturamentoReal(data);
+       double faturamentoPorMaquinaVelha = faturamentoReal / 8;
+       return faturamentoPorMaquinaVelha;
+   }
+   
+   public double faturamentoPorMaquinaNova(String data) throws SQLException{
+       double faturamentoPorMaquinaVelha = faturamentoPorMaquinaVelha(data);
+       double faturamentoPorMaquinaNova = faturamentoPorMaquinaVelha * 0.10
+               + faturamentoPorMaquinaVelha;
+       return faturamentoPorMaquinaNova;
+       
+   }
+   
+   public double custoOperacionalPorMaquinaVelha(String data) throws SQLException{
+       double custoOperacionalTotal = custoOperacionalTotal(data);
+       double custoOperacionalPorMaquinaVelha = custoOperacionalTotal / 8;
+       return custoOperacionalPorMaquinaVelha;
+   }
+   
+   public double custoOperacionalMaquinaNova(String data) throws SQLException{
+       double custoOperacionalPorMaquinaVelha =
+               custoOperacionalPorMaquinaVelha(data);
+       double custoOperacionalMaquinaNova = custoOperacionalPorMaquinaVelha
+               - custoOperacionalPorMaquinaVelha * 0.40;
+       return custoOperacionalMaquinaNova;
+   }
+   
+   public double mediaCustoMaoObraMaquina(String data) throws SQLException{
+      int hrs =  this.horasTrabalhadasnoMes(data);
+      double mediaCustoMaoObraMaquina = (((4 *  hrs) * 20) / 8) ;
+      
+      return mediaCustoMaoObraMaquina;
+   }
+   
+   public double mediaCustoMaoObraMaquinaComAumento(String data) throws SQLException{
+       double mediaCustoMaoObraMaquina = mediaCustoMaoObraMaquina(data);
+       double mediaCustoMaoObraMaquinaComAumento = mediaCustoMaoObraMaquina *
+               0.225 + mediaCustoMaoObraMaquina;
+       
+       return mediaCustoMaoObraMaquinaComAumento;
+   }
+   
+   public double custoMaoObraTotalComAumento(String data) throws SQLException{
+       double mediaCustoMaoObraMaquinaComAumento =
+               mediaCustoMaoObraMaquinaComAumento(data);
+       double custoMaoObraTotalComAumento = mediaCustoMaoObraMaquinaComAumento 
+               * 8;
+       
+       return custoMaoObraTotalComAumento;
+   }
+   
+    public double faturamento(String data) throws SQLException{
+      int hrs =  this.horasTrabalhadasnoMes(data);
+      double faturamento = faturamentoReal(data);
+      double lucroAtual = faturamento  - (((4 *  hrs) * 20) + (faturamento * 0.3));
+
+      return lucroAtual;
+     }
+    
+    public double lucroSemContratar(String data) throws SQLException{
+        double faturamentoReal = faturamentoReal(data);
+        double custoOperacionalTotal = custoOperacionalTotal(data);
+        double faturamentoPorMaquinaNova = faturamentoPorMaquinaNova(data);
+        double custoOperacionalMaquinaNova = custoOperacionalMaquinaNova(data);
+        double custoMaoObraTotalComAumento = custoMaoObraTotalComAumento(data);
+       
+         
+         return (faturamentoReal + faturamentoPorMaquinaNova) - 
+                 custoOperacionalTotal - custoOperacionalMaquinaNova - 
+                 custoMaoObraTotalComAumento;
+         
      }
 
 }

@@ -26,7 +26,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace pref="18" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jButton1" pref="361" max="32767" attributes="0"/>
+                  <Component id="jLucroSemContratar" pref="361" max="32767" attributes="0"/>
                   <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
                   <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
                   <Component id="jButton4" alignment="0" max="32767" attributes="0"/>
@@ -46,7 +46,7 @@
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="jLucroSemContratar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -64,18 +64,22 @@
         <Property name="text" type="java.lang.String" value="SIG"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="jLucroSemContratar">
       <Properties>
         <Property name="text" type="java.lang.String" value=" O lucro da f&#xe1;brica sem contratar um novo funcion&#xe1;rio"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLucroSemContratarMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jLucroSemContratarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="text" type="java.lang.String" value=" O lucro da f&#xe1;brica se contratar um novo funcion&#xe1;rio"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>

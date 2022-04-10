@@ -165,7 +165,8 @@ public class FLucroAtual extends javax.swing.JFrame {
     
 	private void jCalcularMouseClicked(java.awt.event.MouseEvent evt) throws SQLException {
 		String dataSelecionada = (String) jData.getSelectedItem();
-		servicosig.faturamento(dataSelecionada);
+		JOptionPane.showMessageDialog(null, "Valor do lucro atual: " 
+                        + servicosig.faturamento(dataSelecionada));
     } 
     private javax.swing.JButton jCalcular;
     private javax.swing.JComboBox<String> jData;
