@@ -42,7 +42,7 @@ public class ServicoSig {
     
       public void faturamento(String data) throws SQLException{
       int hrs =  this.horasTrabalhadasnoMes(data);
-      double faturamento = ((8* 33.33) * hrs);
+      double faturamento = (48000 * hrs / 200);
       faturamento = faturamento  - (((4 *  hrs) * 20) + (faturamento * 0.3));
 
       JOptionPane.showMessageDialog(null, "Valor do lucro atual: " + faturamento);
