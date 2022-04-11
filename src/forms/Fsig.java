@@ -5,8 +5,10 @@
  */
 
 package forms;
+import servicos.ServicoSalarioMensal;
 import servicos.ServicoSig;
 
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,7 +20,12 @@ import javax.swing.JOptionPane;
 
 import classes.Funcionario;
 import classes.SalarioMensal;
-import forms.FLucroAtual;
+import javax.swing.JComboBox;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JLabel;
+import java.awt.event.ActionListener;
 /**
  *
  * @author raquel.silva2
@@ -31,9 +38,6 @@ public class Fsig extends javax.swing.JFrame {
     public Fsig() {
         initComponents();
     }
-    
-    FLucroAtual flucroatual;
-    FLucroSemContratar flucrosemcontratar;
 
     ServicoSig sig = new ServicoSig();
     
@@ -48,98 +52,163 @@ public class Fsig extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLucroSemContratar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnLucroContratandoFuncionario = new javax.swing.JButton();
+        btnLucroAtual = new javax.swing.JButton();
+        btnAplicacao = new javax.swing.JButton();
+        btnAplicacao.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        	}
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("SIG");
 
-        jLucroSemContratar.setText(" O lucro da fábrica sem contratar um novo funcionário");
-        jLucroSemContratar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLucroSemContratarMouseClicked(evt);
-            }
-        });
+        jLucroSemContratar.setText(" O lucro da fabrica sem contratar um novo funcionario");
+        
         jLucroSemContratar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jLucroSemContratarActionPerformed(evt);
+                try {
+					jLucroSemContratarActionPerformed(evt);
+				} catch (HeadlessException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
-        jButton2.setText(" O lucro da fábrica se contratar um novo funcionário");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnLucroContratandoFuncionario.setText(" O lucro da fabrica se contratar um novo funcionario");
+        btnLucroContratandoFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                try {
+					LucroContratando(evt);
+				} catch (HeadlessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
-        jButton3.setText(" O lucro atual");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnLucroAtual.setText(" O lucro atual");
+        btnLucroAtual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                try {
+					jButton3ActionPerformed(evt);
+				} catch (HeadlessException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
-        jButton4.setText(" Investimento em aplicação");
+        btnAplicacao.setText(" Investimento em aplicacao");
+//        btnAplicacao.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                try {
+//					Aplicacao(evt);
+//				} catch (HeadlessException | SQLException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//            }
+//
+//			private void Aplicacao(ActionEvent evt) {
+//				//TO DO
+//			}
+//        });
+        JLabel jLabel2 = new JLabel();
+        jLabel2.setText("Data");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLucroSemContratar, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(21, 21, 21))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(184, 184, 184)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(43)
+        					.addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(jComboBoxMes, 0, 499, Short.MAX_VALUE))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGap(42)
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addComponent(jLucroSemContratar, GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
+        						.addComponent(btnLucroContratandoFuncionario, GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
+        						.addComponent(btnLucroAtual, GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
+        						.addComponent(btnAplicacao, GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE))))
+        			.addGap(50))
+        		.addGroup(Alignment.LEADING, layout.createSequentialGroup()
+        			.addGap(300)
+        			.addComponent(jLabel1)
+        			.addContainerGap(316, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addGap(43, 43, 43)
-                .addComponent(jLucroSemContratar)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addGap(0, 69, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(21)
+        			.addComponent(jLabel1)
+        			.addGap(18)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jComboBoxMes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(jLabel2))
+        			.addGap(38)
+        			.addComponent(jLucroSemContratar)
+        			.addGap(18)
+        			.addComponent(btnLucroContratandoFuncionario)
+        			.addGap(18)
+        			.addComponent(btnLucroAtual)
+        			.addGap(18)
+        			.addComponent(btnAplicacao)
+        			.addContainerGap(42, Short.MAX_VALUE))
         );
+        getContentPane().setLayout(layout);
+        
+        this.carregarListMes();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLucroSemContratarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLucroSemContratarActionPerformed
-        // TODO add your handling code here:
+    private void jLucroSemContratarActionPerformed(java.awt.event.ActionEvent evt) throws HeadlessException, SQLException {//GEN-FIRST:event_jLucroSemContratarActionPerformed
+    	String dataSelecionada = (String) jComboBoxMes.getSelectedItem();
+        JOptionPane.showMessageDialog(null, "Lucro Sem contratar: " + sig.lucroSemContratar(dataSelecionada));
     }//GEN-LAST:event_jLucroSemContratarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+    private void LucroContratando(java.awt.event.ActionEvent evt) throws HeadlessException, SQLException {//GEN-FIRST:event_jButton2ActionPerformed
+    	String dataSelecionada = (String) jComboBoxMes.getSelectedItem();
+        JOptionPane.showMessageDialog(null, "Lucro contratando: " + sig.lucroSemContratar(dataSelecionada));
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jLucroSemContratarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLucroSemContratarMouseClicked
-        if (flucrosemcontratar == null){
-            flucrosemcontratar = new FLucroSemContratar();
-        }
-        flucrosemcontratar.setVisible(true);
-    }//GEN-LAST:event_jLucroSemContratarMouseClicked
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) throws HeadlessException, SQLException{
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt){
-        if (flucroatual == null){
-            flucroatual = new FLucroAtual();
+    	String dataSelecionada = (String) jComboBoxMes.getSelectedItem();
+		JOptionPane.showMessageDialog(null, "Valor do lucro atual: " + sig.faturamento(dataSelecionada));
+    	
+    }
+    
+    private void carregarListMes() {
+    	
+    	ArrayList<String> lista = new ArrayList<>();
+        
+        if (jComboBoxMes.getItemCount() > 0){
+        	jComboBoxMes.removeAllItems();
         }
-        flucroatual.setVisible(true);
+        
+        try {
+            lista = servicoSalarioMensal.getDatas();
+        } catch (SQLException ex) {
+            Logger.getLogger(Fsig.class.getName()).log(Level.SEVERE, null, ex);
+        }
+             
+        lista.forEach((u) -> {
+        	jComboBoxMes.addItem(u);
+        }); 
+        
+        jComboBoxMes.setSelectedIndex(-1);
+    	
     }
 
     /**
@@ -181,11 +250,11 @@ public class Fsig extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnLucroContratandoFuncionario;
+    private javax.swing.JButton btnLucroAtual;
+    private javax.swing.JButton btnAplicacao;
     private javax.swing.JLabel jLabel1;
+    private JComboBox<String> jComboBoxMes = new JComboBox<String>();
     private javax.swing.JButton jLucroSemContratar;
-    // End of variables declaration//GEN-END:variables
-
+    private ServicoSalarioMensal servicoSalarioMensal = new ServicoSalarioMensal();
 }
