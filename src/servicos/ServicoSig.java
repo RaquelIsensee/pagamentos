@@ -43,8 +43,9 @@ public class ServicoSig {
 
     
    public double faturamentoReal(String data) throws SQLException{
-       int hrs =  this.horasTrabalhadasnoMes(data);
-       double faturamentoReal = (48000 * hrs / 200);
+       int hrsMedia =  this.horasTrabalhadasnoMes(data) / 4;
+       double faturamentoReal = (48000 * hrsMedia / 200);
+
        return faturamentoReal;
    }   
    
@@ -83,8 +84,8 @@ public class ServicoSig {
    }
    
    public double mediaCustoMaoObraMaquina(String data) throws SQLException{
-      int hrs =  this.horasTrabalhadasnoMes(data);
-      double mediaCustoMaoObraMaquina = (((4 *  hrs) * 20) / 8) ;
+       double custoMaoObraTotal = custoMaoObraTotal(data);
+      double mediaCustoMaoObraMaquina = (custoMaoObraTotal / 8) ;
       
       return mediaCustoMaoObraMaquina;
    }
@@ -106,10 +107,23 @@ public class ServicoSig {
        return custoMaoObraTotalComAumento;
    }
    
+   public double custoMaoObraTotal(String data) throws SQLException{
+       return this.horasTrabalhadasnoMes(data) * 20;
+   }
+   
+   public double custoMaoObraContratando(String data) throws SQLException{
+      double mediaHorasTrabalhadas = this.horasTrabalhadasnoMes(data) / 4;
+      double custoMaoObraTotal = custoMaoObraTotal(data);
+      double custoMaoObraContratando = mediaHorasTrabalhadas * 20 + custoMaoObraTotal;
+      
+      return custoMaoObraContratando;
+   }
+   
     public double faturamento(String data) throws SQLException{
-      int hrs =  this.horasTrabalhadasnoMes(data);
       double faturamento = faturamentoReal(data);
-      double lucroAtual = faturamento  - (((4 *  hrs) * 20) + (faturamento * 0.3));
+      double custoMaoObraTotal = custoMaoObraTotal(data);
+      double custoOperacionalTotal = custoOperacionalTotal(data);
+      double lucroAtual = faturamento  - custoMaoObraTotal - custoOperacionalTotal;
 
       return lucroAtual;
      }
@@ -118,7 +132,7 @@ public class ServicoSig {
         double faturamentoReal = faturamentoReal(data);
         double custoOperacionalTotal = custoOperacionalTotal(data);
         double faturamentoPorMaquinaNova = faturamentoPorMaquinaNova(data);
-        double custoOperacionalMaquinaNova = custoOperacionalMaquinaNova(data);
+        double custoOperacionalMaquinaNova = custoOperacionalMaquinaNova(data);;
         double custoMaoObraTotalComAumento = custoMaoObraTotalComAumento(data);
        
          
@@ -127,5 +141,18 @@ public class ServicoSig {
                  custoMaoObraTotalComAumento;
          
      }
+    
+    public double lucroContratando(String data) throws SQLException{
+        double faturamentoReal = faturamentoReal(data);
+        double custoOperacionalTotal = custoOperacionalTotal(data);    
+        double faturamentoPorMaquinaNova = faturamentoPorMaquinaNova(data);
+        double custoOperacionalMaquinaNova = custoOperacionalMaquinaNova(data);
+        double custoMaoObraContratando = custoMaoObraContratando(data);
+        
+        
+        return (faturamentoReal + faturamentoPorMaquinaNova) -
+                custoOperacionalTotal - custoOperacionalMaquinaNova -
+                custoMaoObraContratando;
+    }
 
 }

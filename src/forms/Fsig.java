@@ -178,7 +178,7 @@ public class Fsig extends javax.swing.JFrame {
 
     private void LucroContratando(java.awt.event.ActionEvent evt) throws HeadlessException, SQLException {//GEN-FIRST:event_jButton2ActionPerformed
     	String dataSelecionada = (String) jComboBoxMes.getSelectedItem();
-        JOptionPane.showMessageDialog(null, "Lucro contratando: " + sig.lucroSemContratar(dataSelecionada));
+        JOptionPane.showMessageDialog(null, "Lucro contratando: " + sig.lucroContratando(dataSelecionada));
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -249,7 +249,7 @@ public class Fsig extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton btnLucroContratandoFuncionario;
     private javax.swing.JButton btnLucroAtual;
     private javax.swing.JButton btnAplicacao;

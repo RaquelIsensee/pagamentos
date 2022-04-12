@@ -5,8 +5,10 @@
         <group>
             <file>file:/C:/Users/matheus.aviz/Documents/pagamentos/src/forms/FCalcSalarioMensal.java</file>
             <file>file:/C:/Users/matheus.aviz/Documents/pagamentos/src/main/main.java</file>
-            <file>file:/C:/Users/matheus.aviz/Documents/pagamentos/src/forms/FCadFuncionario.java</file>
             <file>file:/C:/Users/matheus.aviz/Documents/pagamentos/src/forms/Menu.java</file>
+            <file>file:/C:/Users/matheus.aviz/Documents/pagamentos/src/servicos/ServicoSalarioMensal.java</file>
+            <file>file:/C:/Users/matheus.aviz/Documents/pagamentos/src/forms/Fsig.java</file>
+            <file>file:/C:/Users/matheus.aviz/Documents/pagamentos/src/servicos/ServicoSig.java</file>
             <file>file:/C:/Users/matheus.aviz/Documents/pagamentos/src/forms/FConsultSalariobyMes.java</file>
         </group>
     </open-files>
