@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package forms;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -100,6 +102,20 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
+        
+        jGrafico = new JMenu();
+        jGrafico.setToolTipText("");
+        jGrafico.setText("Consultar grafico");
+        jMenuBar1.add(jGrafico);
+        
+        jgrafico1 = new JMenuItem();
+        jgrafico1.setText("Grafico");
+        jGrafico.add(jgrafico1);
+        jGrafico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuSIGActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -190,5 +206,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuSIG;
+    private JMenu jGrafico;
+    private JMenuItem jgrafico1;
     // End of variables declaration//GEN-END:variables
 }
