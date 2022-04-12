@@ -3,5 +3,14 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/Program Files (x86)/MySQL/Connector J 8.0/mysql-connector-java-8.0.27.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ricar/Documents/Java Libraries/jfreechart-1.0.14/lib/gnujaxp.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ricar/Documents/Java Libraries/jfreechart-1.0.14/lib/iText-2.1.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ricar/Documents/Java Libraries/jfreechart-1.0.14/lib/jcommon-1.0.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ricar/Documents/Java Libraries/jfreechart-1.0.14/lib/jfreechart-1.0.14.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ricar/Documents/Java Libraries/jfreechart-1.0.14/lib/jfreechart-1.0.14-experimental.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ricar/Documents/Java Libraries/jfreechart-1.0.14/lib/jfreechart-1.0.14-swt.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ricar/Documents/Java Libraries/jfreechart-1.0.14/lib/junit.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ricar/Documents/Java Libraries/jfreechart-1.0.14/lib/servlet.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ricar/Documents/Java Libraries/jfreechart-1.0.14/lib/swtgraphics2d.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -2,6 +2,8 @@ package forms;
 
 import classes.SalarioMensal;
 import servicos.ServicoSalarioMensal;
+
+import java.awt.event.ItemEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -9,16 +11,28 @@ import java.util.logging.Logger;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
+
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+
 
 public class FGrafico extends javax.swing.JFrame {
 
     ServicoSalarioMensal servicosalariomensal = new ServicoSalarioMensal();
-    
+	FGraficoVisual fgraficovisual;
+
     public FGrafico() {
-        initComponents();
+    	initComponents();
     }
 
     @SuppressWarnings("unchecked")
@@ -57,7 +71,15 @@ public class FGrafico extends javax.swing.JFrame {
         });
 
         JButton btnGerarGrafico = new JButton("Gerar Grafico");
-
+        btnGerarGrafico.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+	        	if (fgraficovisual == null){
+						 fgraficovisual = new FGraficoVisual();
+			    }
+					 fgraficovisual.setVisible(true);
+			    }
+        });
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
         	layout.createParallelGroup(Alignment.TRAILING)
