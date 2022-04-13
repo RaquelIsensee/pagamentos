@@ -2,7 +2,10 @@ package forms;
 
 import classes.SalarioMensal;
 import servicos.ServicoSalarioMensal;
+import servicos.ServicoGrafico;
 
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.ItemEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -24,33 +27,52 @@ import javax.swing.JFrame;
 
 
 public class FGraficoVisual extends javax.swing.JFrame {
-
+	ArrayList<SalarioMensal> listaGrafico;
     ServicoSalarioMensal servicosalariomensal = new ServicoSalarioMensal();
     
-    public FGraficoVisual() {
-        
-		//Cria um dataSet para inserir os dados que serão passados para a criação do gráfico tipo Pie
-		DefaultPieDataset pieDataset = new DefaultPieDataset();
+    public ArrayList<SalarioMensal> getListaGrafico() {
+		return listaGrafico;
+	}
+
+
+	public void setListaGrafico(ArrayList<SalarioMensal> listaGrafico) {
+		System.out.println(listaGrafico);
+		this.listaGrafico = listaGrafico;
+	}
+
+
+	public FGraficoVisual() {
+	
+		System.out.println(listaGrafico);
 		
-		//servicoGrafico.getDados();
-		   
-		//Adiciona os dados ao dataSet deve somar um total de 100%
-		pieDataset.setValue("A", new Integer(75));
-		pieDataset.setValue("B", new Integer(10));
-		pieDataset.setValue("C", new Integer(10));
-		pieDataset.setValue("D", new Integer(5));
-		   
-		//Cria um objeto JFreeChart passando os seguintes parametros
-		JFreeChart grafico = ChartFactory.createPieChart(
-		"Titulo Do Grafico", //Titulo do grafico
-		pieDataset, //DataSet
-		true, //Para mostrar ou não a legenda
-		true, //Para mostrar ou não os tooltips
-		false);
-		       
-		this.add( new ChartPanel( grafico ) );
+		FGraficoVisual self = this;
 		
-		pack();
+		this.addComponentListener(new ComponentAdapter() {
+		    public void componentShown(ComponentEvent e) {
+		       DefaultPieDataset pieDataset = new DefaultPieDataset();
+		
+				for (int i = 0; i < self.listaGrafico.size(); i++) {
+					SalarioMensal salarioMensal = self.listaGrafico.get(i);
+					pieDataset.setValue(salarioMensal.getMes(), salarioMensal.getValor());
+					System.out.println(salarioMensal.getMes());
+					System.out.println(salarioMensal.getValor());
+				}
+				   
+				//Cria um objeto JFreeChart passando os seguintes parametros
+				JFreeChart grafico = ChartFactory.createPieChart(
+				"Titulo Do Grafico", //Titulo do grafico
+				pieDataset, //DataSet
+				true, //Para mostrar ou não a legenda
+				true, //Para mostrar ou não os tooltips
+				false);
+				       
+				self.add( new ChartPanel( grafico ) );
+				System.out.println("add");
+				
+				self.pack();
+		    }
+		    
+		});
 		
     }
 
