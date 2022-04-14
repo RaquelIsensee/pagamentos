@@ -30,7 +30,7 @@ import java.awt.event.ActionEvent;
 public class FGrafico extends javax.swing.JFrame {
 	String pontoInicial, pontoFinal;
     ServicoSalarioMensal servicosalariomensal = new ServicoSalarioMensal();
-	FGraficoVisual fgraficovisual;
+	FGraficoHorizontal fgraficohorizontal;
     ServicoGrafico servicoGrafico = new ServicoGrafico();
 
     public FGrafico() {
@@ -75,24 +75,20 @@ public class FGrafico extends javax.swing.JFrame {
         JButton btnGerarGrafico = new JButton("Gerar Grafico");
         btnGerarGrafico.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
-				
-        		System.out.println("start");
-	    		
+					    		
         		try {
 	    			
 	    			String dataInicial = JDataInicial.getSelectedItem().toString().substring(9, 16);
 	    			String dataFinal = JDataFinal.getSelectedItem().toString().substring(9, 16);
-	    			
-					System.out.println("data inicial " + dataInicial);
-					System.out.println("data final " + dataFinal);
+
 	    			
 					ArrayList<SalarioMensal> listaGrafico = servicoGrafico.PagamentosGrafico(dataInicial, dataFinal);
 					
-					if (fgraficovisual == null){
-						fgraficovisual = new FGraficoVisual();
+					if (fgraficohorizontal == null) {
+						fgraficohorizontal = new FGraficoHorizontal("titulo do grafico", listaGrafico);
 					}
-					fgraficovisual.setListaGrafico(listaGrafico);
-					fgraficovisual.setVisible(true);
+
+					fgraficohorizontal.setVisible(true);
 					
 				} catch (SQLException e) {
 					e.printStackTrace();

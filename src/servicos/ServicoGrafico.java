@@ -30,7 +30,6 @@ public class ServicoGrafico {
     
     public ArrayList<SalarioMensal> PagamentosGrafico(String dataInicial, String dataFinal)throws SQLException{
         ArrayList<SalarioMensal> listaGrafico = new ArrayList<>();
-        System.out.println("SELECT * FROM salario_mensal WHERE mes >= '"+dataInicial + "-01' AND mes <= '"+dataFinal + "-01'");
         try (Statement st = conexao.getConexao().createStatement(); 
              ResultSet rs = st.executeQuery
              ("SELECT * FROM salario_mensal WHERE mes >= '"+dataInicial + "-01' AND mes <= '"+dataFinal + "-01'")){
