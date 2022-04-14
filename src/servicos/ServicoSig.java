@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -154,5 +155,24 @@ public class ServicoSig {
                 custoOperacionalTotal - custoOperacionalMaquinaNova -
                 custoMaoObraContratando;
     }
+    public String aplicacao12Meses() throws SQLException{
+    	double valorFinal = 58000;
+	    
+	    for (int i = 1; i < 13; i++){
+	        valorFinal = valorFinal + (valorFinal * 0.01);
+	    }
+        DecimalFormat df = new DecimalFormat("#.##");
 
+        return df.format(valorFinal);
+       }
+    
+    public String aplicacao24Meses() throws SQLException{
+    	double valorFinal = 58000;
+	    
+	    for (int i = 1; i < 25; i++){
+	        valorFinal = valorFinal + (valorFinal * 0.015);
+	    }
+        DecimalFormat df = new DecimalFormat("#.##");
+        return df.format(valorFinal);
+       }
 }

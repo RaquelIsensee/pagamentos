@@ -106,20 +106,23 @@ public class Fsig extends javax.swing.JFrame {
         });
 
         btnAplicacao.setText(" Investimento em aplicacao");
-//        btnAplicacao.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                try {
-//					Aplicacao(evt);
-//				} catch (HeadlessException | SQLException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//            }
-//
-//			private void Aplicacao(ActionEvent evt) {
-//				//TO DO
-//			}
-//        });
+        btnAplicacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+					Aplicacao(evt);
+				} catch (HeadlessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            }
+
+			private void Aplicacao(ActionEvent evt) throws HeadlessException, SQLException {
+				JOptionPane.showMessageDialog(null, "Valor da aplicacao em 12 meses: " + sig.aplicacao12Meses() + " Valor da aplicacao em 24 meses: " + sig.aplicacao24Meses());
+			}
+        });
         JLabel jLabel2 = new JLabel();
         jLabel2.setText("Data");
         
