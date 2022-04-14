@@ -1,6 +1,7 @@
 package forms;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -32,6 +33,11 @@ public class FGraficoHorizontal extends ApplicationFrame {
 	ArrayList<SalarioMensal> listaGrafico;
     ServicoSalarioMensal servicosalariomensal = new ServicoSalarioMensal();
     ServicoGrafico servicoGrafico = new ServicoGrafico();
+    
+    public void windowClosing(WindowEvent e)
+    {
+    	this.dispose();
+    }
 	
     public FGraficoHorizontal(final String title, ArrayList<SalarioMensal> listaGrafico) {
     	

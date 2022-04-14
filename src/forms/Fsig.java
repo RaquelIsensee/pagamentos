@@ -26,6 +26,7 @@ import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 /**
  *
  * @author raquel.silva2
@@ -121,10 +122,17 @@ public class Fsig extends javax.swing.JFrame {
 //        });
         JLabel jLabel2 = new JLabel();
         jLabel2.setText("Data");
+        
+        btnSair = new JButton("Sair");
+        btnSair.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+        		dispose();
+        	}
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
-        	layout.createParallelGroup(Alignment.TRAILING)
+        	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
         				.addGroup(layout.createSequentialGroup()
@@ -140,10 +148,14 @@ public class Fsig extends javax.swing.JFrame {
         						.addComponent(btnLucroAtual, GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
         						.addComponent(btnAplicacao, GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE))))
         			.addGap(50))
-        		.addGroup(Alignment.LEADING, layout.createSequentialGroup()
+        		.addGroup(layout.createSequentialGroup()
         			.addGap(300)
         			.addComponent(jLabel1)
         			.addContainerGap(316, Short.MAX_VALUE))
+        		.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
+        			.addContainerGap(516, Short.MAX_VALUE)
+        			.addComponent(btnSair)
+        			.addGap(28))
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
@@ -162,7 +174,8 @@ public class Fsig extends javax.swing.JFrame {
         			.addComponent(btnLucroAtual)
         			.addGap(18)
         			.addComponent(btnAplicacao)
-        			.addContainerGap(42, Short.MAX_VALUE))
+        			.addPreferredGap(ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+        			.addComponent(btnSair))
         );
         getContentPane().setLayout(layout);
         
@@ -257,4 +270,5 @@ public class Fsig extends javax.swing.JFrame {
     private JComboBox<String> jComboBoxMes = new JComboBox<String>();
     private javax.swing.JButton jLucroSemContratar;
     private ServicoSalarioMensal servicoSalarioMensal = new ServicoSalarioMensal();
+    private JButton btnSair;
 }

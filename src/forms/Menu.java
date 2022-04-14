@@ -21,6 +21,7 @@ public class Menu extends javax.swing.JFrame {
     FCalcSalarioMensal fcalcsalariomensal;
     FConsultSalariobyMes fconsultsalario;
     Fsig sig;
+    FGrafico grafico;
     
     public Menu() {
         initComponents();
@@ -111,9 +112,10 @@ public class Menu extends javax.swing.JFrame {
         jgrafico1 = new JMenuItem();
         jgrafico1.setText("Grafico");
         jGrafico.add(jgrafico1);
-        jGrafico.addActionListener(new java.awt.event.ActionListener() {
+        jgrafico1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuSIGActionPerformed(evt);
+            	System.out.println("a");
+            	GraficoActionPerformed(evt);
             }
         });
 
@@ -158,6 +160,13 @@ public class Menu extends javax.swing.JFrame {
     }
         sig.setVisible(true);
     }//GEN-LAST:event_jMenuSIGActionPerformed
+    
+    private void GraficoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSIGActionPerformed
+        if (grafico == null){
+        	grafico = new FGrafico();
+}
+        grafico.setVisible(true);
+}
 
     /**
      * @param args the command line arguments
